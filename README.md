@@ -10,4 +10,4 @@ Předělání nákupního seznamu na objektově orientovaný přístup, aplikace
 ## jak program spustit ?
 Ke spuštění musí být nainstalovaný python 3. poté se dá program spustit double clickem, nebo v terminálu pomocí příkazu python Nakup.py
 ## co jsem se naučil ?
-seznámení s objektově orientovaným přístupem programování.
+seznámil jsem se s pojmem třída a objekt, a jejich metodami self, dále ošetření chyb a výjímek, a čtení a zápis do souboru.
