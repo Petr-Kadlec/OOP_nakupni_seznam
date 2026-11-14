@@ -1,4 +1,4 @@
-import os
+
 class Produkt:
     def __init__(self, nazev, cena):
         self.nazev = nazev
@@ -50,23 +50,12 @@ class NakupniSeznam:
             if nejdrazsi.cena < produkt.cena:
                 nejdrazsi = produkt
         return nejdrazsi
-    
-    
-    def celkova_cena(self):
-            Celkem = 0
-            
-            for produkt in self.polozky:
-                Celkem = int(produkt.cena) + Celkem
-            return Celkem
-        
         
     def ulozit_nakup(self):
-     print(f"Ukládám {len(self.polozky)} položek")
-     print("Soubor:", os.path.abspath("nakup.txt"))
      with open("nakup.txt", "w", encoding="utf-8") as soubor:
-        for Produkt in self.polozky:
+        for produkt in self.polozky:
             
-            soubor.write(f"{Produkt.nazev};{Produkt.cena}\n")
+            soubor.write(f"{produkt.nazev};{produkt.cena}\n")
             
     def nacti_nakup(self):
      
@@ -75,7 +64,7 @@ class NakupniSeznam:
             for radek in soubor:
                 radek = radek.strip()
                 nazev, cena = radek.split(";")
-                novy = Produkt(nazev, cena)
+                novy = Produkt(nazev, int(cena))
                 self.pridat(novy)
      except FileNotFoundError:
         pass  
@@ -92,7 +81,7 @@ class NakupniSeznam:
 
 nakup = NakupniSeznam()
 nakup.nacti_nakup()
-nejdrazsi = nakup.nejdrazsi()
+
 
 while True:
     volba = input(
@@ -108,6 +97,7 @@ while True:
     elif volba == "4":
         print(f" celkova cena nákupu je {nakup.celkova_cena()}")
     elif volba == "5":
+        nejdrazsi = nakup.nejdrazsi()
         print(f"nejdrazší položka nákupu je {nejdrazsi.popis()}")
     else:
         print("Neznámá volba, zkus to znovu.")
